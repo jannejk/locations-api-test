@@ -7,5 +7,16 @@
 </head>
 <body>
     <h1>Hello World!</h1>
+    <script>
+        const main = async()=>{
+            let hr = await fetch("http://localhost:8080/api/locations")
+            let data = await hr.json()
+            modifiUI(data)
+        }
+        const modofiUI = (data) =>{
+            let ul = document.querySelector("ul")
+            // ul.innerHTML = data.map((item) => )
+        }
+    </script>
 </body>
 </html>
