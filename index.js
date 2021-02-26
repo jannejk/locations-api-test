@@ -1,30 +1,15 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+let locationsrouter = require("./routes/locationrouter.js");
 
+const app = express();
 const port = process.env.PORT || 3000;
 
-//kun http-pyyntö tulee, kutsu callback funkkaria
-// app.use((req,res, next) => {
-//     console.log("hello");
-//     next();
-// })
-// app.use((req,res, next) => {
-//     console.log("world!");
-//     next();
-// })
+// display "static files"
 app.use(express.static("public"));
 
-let db = [
-    {id: 1, latitude: 80, longitude: 80},
-    {id: 2, latitude: 90, longitude: 90},
-];
-app.get("/api/locations", (req, res) =>{
-    res.send(db);
-})
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+// jos url alkaa http://localhost:8080/api/locations
+app.use("/api/locations", locationsrouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+  console.log(`Example app listening at http://localhost:${port}`);
+});

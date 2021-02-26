@@ -6,17 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <h1>Locations API</h1>
+    <ul>
+
+    </ul>
     <script>
-        const main = async()=>{
-            let hr = await fetch("http://localhost:8080/api/locations")
+        const main = async () => {
+            let hr = await fetch("http://localhost:3000/api/locations")
             let data = await hr.json()
             modifiUI(data)
         }
-        const modofiUI = (data) =>{
+        const modifiUI = (data) => {
             let ul = document.querySelector("ul")
-            // ul.innerHTML = data.map((item) => )
+            ul.innerHTML = data.map((item) => `<li>${item.latitude} - ${item.longitude}</li>`).join("")
         }
+        main()
     </script>
 </body>
 </html>
